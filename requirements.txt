@@ -1,0 +1,8 @@
+langchain-core
+fastapi
+uvicorn
+sqlalchemy
+langchain_google_genai 
+pydantic
+email-validator
+python-dotenv
