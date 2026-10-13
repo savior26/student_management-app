@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status,Depends, Response
+from fastapi import APIRouter, status,Depends, Response, HTTPException
 from sqlalchemy.orm import Session
 from myapp.database import get_db
 from myapp.models import Student
@@ -7,6 +7,9 @@ router= APIRouter(prefix="/student")
 
 @router.post('/',response_model=StudentResponse, status_code=status.HTTP_201_CREATED )
 def create_student(request:createStudent, db: Session=Depends(get_db)):
+    is_student= db.query(Student).filter(Student.student_email==request.student_email).first()
+    if is_student:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Student already exists")
     new_student= Student(**request.model_dump())
     db.add(new_student)
     db.commit()
