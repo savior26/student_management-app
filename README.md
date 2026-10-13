@@ -1,4 +1,4 @@
-# Student Management API
+# Student Management APP
 
 A FastAPI application for managing student records, with an AI-powered natural-language query endpoint.
 
@@ -32,7 +32,7 @@ Keep `.env` private; it is excluded from version control.
 Start the development server from the project root:
 
 ```powershell
-uvicorn main2:app --reload
+uvicorn main:app --reload
 ```
 
 Open the interactive API documentation at <http://127.0.0.1:8000/docs>.
